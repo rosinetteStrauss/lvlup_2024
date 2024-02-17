@@ -52,6 +52,9 @@ func deploy_trap():
 	get_tree().root.add_child(t)
 	t.visible = true
 
+func retrieve_trap():
+	pass	
+
 func _on_input_manager_move_jec(left, right, jump):
 	move(left, right, jump)
 

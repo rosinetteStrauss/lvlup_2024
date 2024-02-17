@@ -8,17 +8,19 @@ enum input_move {LEFT = 0, RIGHT = 1, JUMP = 2}
 
 signal move_jec(left, right, jump)
 signal land_trap_jec()
+signal retrieve_trap_jec()
 signal activate_shared_jec(trap_id)
 signal activate_event_jec(trap_id)
 signal activate_own_jec(trap_id)
 signal move_jin(left, right, jump)
 signal land_trap_jin()
+signal retrieve_trap_jin()
 signal activate_shared_jin(trap_id)
 signal activate_event_jin(trap_id)
 signal activate_own_jin(trap_id)
 
 var activ_player
-var is_player_active = false
+@export var is_player_active = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -37,6 +39,8 @@ func _process(delta):
 				move_input[input_move.JUMP] = 1
 			if Input.is_action_just_pressed("jec_land_trap"):
 				emit_signal("land_trap_jec")
+			if Input.is_action_just_pressed("jec_trap_retrieval"):
+				emit_signal("retrieve_trap_jec")
 			#TODO : manage multipleinput associated with same action. If not possible, create multiple signals
 			if Input.is_action_just_pressed("jec_shared_trap_activation"):
 				emit_signal("activate_shared_jec", 0)
@@ -54,6 +58,8 @@ func _process(delta):
 				move_input[input_move.JUMP] = 1
 			if Input.is_action_just_pressed("jin_land_trap"):
 				emit_signal("land_trap_jin")
+			if Input.is_action_just_pressed("jin_trap_retrieval"):
+				emit_signal("retrieve_trap_jin")
 			if Input.is_action_just_pressed("jin_shared_trap_activation"):
 				emit_signal("activate_shared_jin", 0)
 			if Input.is_action_just_pressed("jin_event_trap_activation"):
