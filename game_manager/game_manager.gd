@@ -3,7 +3,8 @@ extends Node
 signal activate_player
 signal end_round
 signal end_stage
-signal end_game
+signal end_game_hud
+signal end_game_ctrl
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -18,7 +19,7 @@ func _process(delta):
 func game_start():
 	# instantiate everything
 	print("boup")
-	activate_player.emit()
+	activate_player.emit(true)
 
 
 # signal end_round from game_manager?
@@ -31,4 +32,5 @@ func new_round():
 
 func detect_end_game():
 	var crt_player = "jin"
-	end_game.emit(crt_player)
+	end_game_hud.emit(crt_player)
+	end_game_ctrl.emit(false) # is_player_active

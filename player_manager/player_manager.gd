@@ -16,6 +16,7 @@ var trap_own_template
 var available_trap_own
 
 var is_in_objective_zone = false
+var is_player_active = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -23,42 +24,46 @@ func _ready():
 	trap_own_template = get_node("trap_own")
 	trap_own_template.visible = false
 	current_velocity = Vector2.ZERO
-	current_gravity = gravity
+	current_gravity = 0
 	currently_active = active_at_start
 	screen_size = get_viewport_rect().size
-	manage_visibility()
+	manage_visibility(currently_active)
 
-func manage_visibility():
-	if currently_active:
+func manage_visibility(is_active):
+	if is_active:
 		show()
+		position = Vector2(115,250)
+		is_player_active = true
 		$CollisionShape2D.disabled = false
 	else:
 		hide()
+		is_player_active = false
 		$CollisionShape2D.disabled = true
 
 func _process(delta):
-	if jumping:
-		$AnimatedSprite2D.animation = "eco_jump"
-		jumping = false
-	elif is_on_floor():
-		$AnimatedSprite2D.animation = "eco_walk"
-		current_gravity = 0.1
-		current_velocity.y = 0
-	else:
-		current_gravity = gravity
-	current_velocity.x = (current_velocity.x * (1-friction))
-	current_velocity.y += current_gravity
-	position += current_velocity #* delta
-	
-	if current_velocity.length() > 0:
-		$AnimatedSprite2D.play()
-	else:
-		$AnimatedSprite2D.stop()
-	
-	# prevent movement exceed screen    
-	position = position.clamp(Vector2.ZERO, screen_size)
-	   
-	move_and_slide()
+	if is_player_active:
+		if jumping:
+			jumping = false
+		elif is_on_floor():
+			$AnimatedSprite2D.animation = "eco_walk"
+			current_gravity = 0.1
+			current_velocity.y = 0
+		else:
+			current_gravity = gravity
+			$AnimatedSprite2D.animation = "eco_jump"
+		current_velocity.x = (current_velocity.x * (1-friction))
+		current_velocity.y += current_gravity
+		position += current_velocity
+			
+		if abs(current_velocity.x) > 0.001 || abs(current_velocity.y) > 0.2:
+			$AnimatedSprite2D.play()
+		else:
+			$AnimatedSprite2D.stop()
+		
+		# prevent movement exceed screen    
+		position = position.clamp(Vector2.ZERO, screen_size)
+		   
+		move_and_slide()
 	
 
 func move(left, right, jump):

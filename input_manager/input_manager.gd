@@ -65,5 +65,5 @@ func _process(delta):
 #TODO : obective completion and destruction are managed with input? If so add some code here
 #			Can be a simple timer upon being in the zone
 
-func toggle_player_activity():
-	is_player_active = !is_player_active
+func toggle_player_activity(is_active):
+	is_player_active = is_active
