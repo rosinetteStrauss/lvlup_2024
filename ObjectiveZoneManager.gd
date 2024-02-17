@@ -2,13 +2,16 @@ extends Node
 
 @export var spawn_offset_x = 10
 @export var spawn_offset_y = 10
-@export var nb_zone = 3
+@export var nb_zone = 2
 
 @export var ground_middle_left_lim = 0
 @export var ground_middle_right_lim = 0
 @export var ground_middle_y = 0
 
 var objective_zone_template
+
+var player_is_eco = true
+signal increase_score_current(value)
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -34,8 +37,20 @@ func deploy_zone():
 		x_coor = randi_range(x_lim_left, x_lim_right)
 		crt_zone = objective_zone_template.duplicate()
 		crt_zone.position = Vector2(x_coor, y_coor)
-		#crt_zone.my_set_position()
 		get_tree().root.add_child.call_deferred(crt_zone)
 		crt_zone.visible = true
+		$ObjectiveZone/CollisionShape2D.disabled = false
+		if player_is_eco:
+			$ObjectiveZone/Sprite2D.texture = load("res://sprites/zone_eco1_light.png")
+		else:
+			$ObjectiveZone/Sprite2D.texture = load("res://sprites/zone_indu1_light.png")
 
+func is_complete():
+	$ObjectiveZone/CollisionShape2D.disabled = true
+	if player_is_eco:
+		$ObjectiveZone/Sprite2D.texture = load("res://sprites/objective_eco1.png")
+	else:
+		$ObjectiveZone/Sprite2D.texture = load("res://sprites/objective1_indu.png")
 
+func _on_player_manager_objective_complete():
+	is_complete()
