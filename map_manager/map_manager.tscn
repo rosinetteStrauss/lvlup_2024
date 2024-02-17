@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://mnpudgs7sid2"]
 
-[ext_resource type="Texture2D" uid="uid://c51kri1ieqbvp" path="res://sprites/placeholder/ground_horizontal.png" id="1_h0u1u"]
+[ext_resource type="Texture2D" uid="uid://blgepi040i4te" path="res://sprites/plateforme_centrale.png" id="1_gf7df"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_p0fau"]
 size = Vector2(648, 80)
@@ -12,7 +12,7 @@ size = Vector2(648, 80)
 [node name="Sprite2D" type="Sprite2D" parent="ground_middle"]
 position = Vector2(573.625, 328.875)
 scale = Vector2(0.999615, 0.541391)
-texture = ExtResource("1_h0u1u")
+texture = ExtResource("1_gf7df")
 metadata/_edit_group_ = true
 
 [node name="StaticBody2D" type="StaticBody2D" parent="ground_middle"]
