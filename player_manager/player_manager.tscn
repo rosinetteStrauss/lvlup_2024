@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://v30f5cg6yjxt"]
+
+[ext_resource type="Texture2D" uid="uid://dp16mtcu10rsy" path="res://sprites/placeholder/active.png" id="1_54ol1"]
+[ext_resource type="Script" path="res://player_manager/player_manager.gd" id="1_n1ham"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_swl8g"]
+size = Vector2(108, 156)
+
+[node name="player_manager" type="RigidBody2D"]
+script = ExtResource("1_n1ham")
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(476, 257)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_54ol1")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(476, 257)
+scale = Vector2(0.5, 0.5)
+shape = SubResource("RectangleShape2D_swl8g")
