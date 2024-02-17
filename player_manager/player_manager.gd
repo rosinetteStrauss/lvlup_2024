@@ -104,9 +104,12 @@ func deploy_trap():
 		available_trap_own -= 1
 		var t = trap_own_template.duplicate()
 		t.set_global_position(global_position)
+		t.hit_own.connect($"../game_manager"._on_trap_own_hit_own)
 		get_tree().root.add_child(t)
 		t.scale = Vector2(1,1)
 		t.visible = true
+		t.set_trap_owner(is_jec)
+		
 
 func _on_input_manager_move_jec(left, right, jump):
 	move(left, right, jump)

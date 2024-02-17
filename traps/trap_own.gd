@@ -4,7 +4,7 @@ signal hit_own
 
 var is_eco
 var is_in_area = false 
-
+var trap_owner = "Jec"
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
@@ -23,16 +23,23 @@ func is_eco_player(is_eco):
 func check_if_trapped():
 	if is_in_area:
 		hit_own.emit()
+		print(is_in_area)
 		#queue_free()
 
 func _on_area_2d_body_entered(body):
-	print(body.name)
-	if body.name == "player_manager":
-		print("lasdf")
-		is_in_area = true
-		check_if_trapped()
+	if (body.name == "Jec" || body.name == "Jin"):
+			if trap_owner != body.name:
+				is_in_area = true
+				check_if_trapped()
 
 func _on_area_2d_body_exited(body):
-	if body.name == "player_manager":
-		is_in_area = false
-		check_if_trapped()
+	if (body.name == "Jec" || body.name == "Jin"):
+			if trap_owner != body.name:
+				is_in_area = false
+				check_if_trapped()
+
+func set_trap_owner(is_jec):
+	if is_jec:
+		trap_owner = "Jec"
+	else: 
+		trap_owner = "Jin"

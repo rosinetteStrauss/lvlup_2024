@@ -56,12 +56,10 @@ func launch_end_game():
 	end_game_ctrl.emit(false) # is_player_active
 
 func _on_trap_event_hit():
-	new_round()
-
+	check_end_round()
 
 func _on_hud_end_timeout():
-	new_round()
-
+	check_end_round()
 
 func _on_trap_own_hit_own():
-	new_round()
+	check_end_round()

@@ -75,7 +75,10 @@ animations = [{
 }]
 
 [node name="player_manager" type="CharacterBody2D"]
+<<<<<<< Updated upstream
+=======
 position = Vector2(8, 12)
+>>>>>>> Stashed changes
 script = ExtResource("1_n1ham")
 active_at_start = false
 metadata/_edit_group_ = true
