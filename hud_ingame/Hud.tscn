@@ -1,0 +1,23 @@
+[gd_scene load_steps=2 format=3 uid="uid://csobuv8hrtemj"]
+
+[ext_resource type="Script" path="res://hud_ingame/Hud.gd" id="1_5y2mc"]
+
+[node name="Hud" type="CanvasLayer"]
+script = ExtResource("1_5y2mc")
+
+[node name="display_timer" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0
+text = "Timer:"
+
+[node name="game_timer" type="Timer" parent="."]
+process_callback = 0
+wait_time = 10.0
+one_shot = true
+autostart = true
+
+[node name="second_timer" type="Timer" parent="."]
+autostart = true
+
+[connection signal="timeout" from="game_timer" to="." method="_on_game_timer_timeout"]
+[connection signal="timeout" from="second_timer" to="." method="_on_second_timer_timeout"]
