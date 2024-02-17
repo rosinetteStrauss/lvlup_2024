@@ -9,13 +9,15 @@
 [node name="map_manager" parent="." instance=ExtResource("1_ppxhx")]
 
 [node name="jec" parent="." instance=ExtResource("2_6lgle")]
-position = Vector2(212, -152)
+position = Vector2(663, 213)
 
 [node name="jin" parent="." instance=ExtResource("2_6lgle")]
-position = Vector2(-51, -158)
+position = Vector2(430, 210)
 active_at_start = false
 
 [node name="input_manager" parent="." instance=ExtResource("3_7ifw6")]
+position = Vector2(-1, -1)
 
+[connection signal="land_trap_jec" from="input_manager" to="jec" method="_on_input_manager_land_trap_jec"]
 [connection signal="move_jec" from="input_manager" to="jec" method="_on_input_manager_move_jec"]
 [connection signal="move_jin" from="input_manager" to="jin" method="_on_input_manager_move_jin"]

@@ -8,8 +8,12 @@ var current_gravity
 @export var gravity = 1
 @export var friction = 0.9
 
+var trap_own_template
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	trap_own_template = get_node("trap_own")
+	trap_own_template.visible = false
 	current_velocity = Vector2.ZERO
 	current_gravity = gravity
 	currently_active = active_at_start
@@ -42,8 +46,18 @@ func move(left, right, jump):
 	if jump == 1 and is_on_floor():
 		current_velocity.y -= speed
 
+func deploy_trap():
+	var t = trap_own_template.duplicate()
+	t.set_global_position(global_position)
+	get_tree().root.add_child(t)
+	t.visible = true
+
 func _on_input_manager_move_jec(left, right, jump):
 	move(left, right, jump)
 
 func _on_input_manager_move_jin(left, right, jump):
 	move(left, right, jump)
+
+
+func _on_input_manager_land_trap_jec():
+	deploy_trap()
