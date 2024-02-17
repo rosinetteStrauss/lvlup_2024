@@ -82,14 +82,6 @@ jin_own_trap_activation={
 "deadzone": 0.5,
 "events": []
 }
-jin_trap_retrieval={
-"deadzone": 0.5,
-"events": []
-}
-jec_trap_retrieval={
-"deadzone": 0.5,
-"events": []
-}
 
 [rendering]
 
