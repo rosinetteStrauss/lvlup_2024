@@ -10,6 +10,7 @@
 
 [node name="jec" parent="." instance=ExtResource("2_6lgle")]
 position = Vector2(212, -152)
+speed = 1000
 
 [node name="jin" parent="." instance=ExtResource("2_6lgle")]
 position = Vector2(-51, -158)

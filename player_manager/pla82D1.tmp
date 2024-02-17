@@ -6,7 +6,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_swl8g"]
 size = Vector2(108, 156)
 
-[node name="player_manager" type="CharacterBody2D"]
+[node name="player_manager" type="RigidBody2D"]
 script = ExtResource("1_n1ham")
 metadata/_edit_group_ = true
 
