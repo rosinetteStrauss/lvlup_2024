@@ -1,19 +1,24 @@
-[gd_scene load_steps=4 format=3 uid="uid://lfekjqniqoq"]
+[gd_scene load_steps=4 format=3 uid="uid://cpyondstlttdo"]
 
 [ext_resource type="Script" path="res://traps/trap_shared.gd" id="1_50ror"]
-[ext_resource type="Texture2D" uid="uid://cvkogse4nnklt" path="res://sprites/placeholder/trap_shared.png" id="1_tkdc0"]
+[ext_resource type="Texture2D" uid="uid://b4vsjavc6uvcg" path="res://sprites/piege-commun-poser.png" id="2_ox58p"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_yr53q"]
-size = Vector2(48, 20)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rrgsu"]
+size = Vector2(360, 120)
 
 [node name="trap_shared" type="RigidBody2D"]
+position = Vector2(-3, 6)
+scale = Vector2(0.5, 0.5)
 collision_layer = 4
 collision_mask = 4
 script = ExtResource("1_50ror")
+metadata/_edit_group_ = true
 
 [node name="Sprite2D2" type="Sprite2D" parent="."]
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("1_tkdc0")
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("2_ox58p")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_yr53q")
+position = Vector2(-4.76837e-07, 8)
+scale = Vector2(0.1, 0.1)
+shape = SubResource("RectangleShape2D_rrgsu")

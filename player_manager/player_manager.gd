@@ -27,6 +27,7 @@ func _ready():
 	current_gravity = 0
 	currently_active = active_at_start
 	screen_size = get_viewport_rect().size
+	$trap_own.is_eco_player(true)
 	manage_visibility(currently_active)
 
 func manage_visibility(is_active):
@@ -83,6 +84,7 @@ func deploy_trap():
 		var t = trap_own_template.duplicate()
 		t.set_global_position(global_position)
 		get_tree().root.add_child(t)
+		t.scale = Vector2(1,1)
 		t.visible = true
 
 func _on_input_manager_move_jec(left, right, jump):
