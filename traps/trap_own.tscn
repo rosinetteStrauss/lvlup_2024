@@ -1,21 +1,39 @@
 [gd_scene load_steps=4 format=3 uid="uid://bl0xfys5egxes"]
 
-[ext_resource type="Texture2D" uid="uid://dkid5lk7i4ohk" path="res://sprites/placeholder/trap.png" id="1_7rqw2"]
-[ext_resource type="Script" path="res://traps/trap_own.gd" id="1_bvepq"]
+[ext_resource type="Texture2D" uid="uid://bkrbtvk6ub5w2" path="res://sprites/placeholder/trap_own.png" id="1_7rqw2"]
+
+[sub_resource type="GDScript" id="GDScript_00idq"]
+script/source = "extends RigidBody2D
+
+var is_eco
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta):
+	pass
+
+func is_eco_player(is_eco):
+	if is_eco:
+		$Sprite2D.texture = load(\"res://sprites/Piege-eco-poser.png\")
+	else:
+		$Sprite2D.texture = load(\"res://sprites/Piege-indu-poser.png\")
+"
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_a8eaf"]
-size = Vector2(92, 40)
+size = Vector2(48, 20)
 
 [node name="trap_own" type="RigidBody2D"]
 collision_layer = 0
 collision_mask = 2
-script = ExtResource("1_bvepq")
+script = SubResource("GDScript_00idq")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.25, 0.25)
+scale = Vector2(0.5, 0.5)
 texture = ExtResource("1_7rqw2")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(2.98023e-08, 3.55271e-15)
-scale = Vector2(0.25, 0.25)
 shape = SubResource("RectangleShape2D_a8eaf")

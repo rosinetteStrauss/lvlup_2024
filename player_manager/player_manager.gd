@@ -109,20 +109,16 @@ func _on_input_manager_land_trap_jec():
 func _on_objective_zone_body_entered(body):
 	is_in_objective_zone = true
 	start_timer()
-	print(is_in_objective_zone)
 
 #signal body_exited Objective_zone
 func _on_objective_zone_body_exited(body):
 	is_in_objective_zone = false
 	reset_timer()
-	print(is_in_objective_zone)
 
 func start_timer():
-	print("starting")
 	timer.start()
 
 func reset_timer():
-	print("reseting")
 	timer.stop()
 
 func objective_validated():
