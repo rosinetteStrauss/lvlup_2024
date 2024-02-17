@@ -1,34 +1,33 @@
-[gd_scene load_steps=5 format=3 uid="uid://dplyf06fxw643"]
+[gd_scene load_steps=5 format=3 uid="uid://dvkuqlx0ih1tl"]
 
 [ext_resource type="Script" path="res://traps/trap_event.gd" id="1_gr4fb"]
 [ext_resource type="Texture2D" uid="uid://dkt2d8jdt7ndl" path="res://traps/Euclid.jpg" id="1_ss56e"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ppkd3"]
-size = Vector2(207, 270)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yr53q"]
+size = Vector2(270.5, 16)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_sysdt"]
-size = Vector2(76, 113)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pr6v7"]
+size = Vector2(260.5, 309.5)
 
-[node name="TrapEvent" type="RigidBody2D"]
-position = Vector2(340, 237)
+[node name="trap_event" type="RigidBody2D"]
+position = Vector2(0, 70)
+collision_layer = 4
+collision_mask = 4
 script = ExtResource("1_gr4fb")
 
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(369.75, 305)
+shape = SubResource("RectangleShape2D_yr53q")
+
 [node name="Euclid" type="Sprite2D" parent="."]
-position = Vector2(31.5002, -41.2498)
-scale = Vector2(0.797041, 0.860354)
+position = Vector2(370, 154)
 texture = ExtResource("1_ss56e")
 
 [node name="Area2D" type="Area2D" parent="."]
-position = Vector2(3.05176e-05, 1.52588e-05)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(31.5002, -41)
-rotation = -3.14159
-shape = SubResource("RectangleShape2D_ppkd3")
+position = Vector2(368.75, 154.25)
+shape = SubResource("RectangleShape2D_pr6v7")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(26, 37.5)
-shape = SubResource("RectangleShape2D_sysdt")
-
-[connection signal="body_entered" from="." to="." method="_on_body_entered"]
-[connection signal="body_shape_entered" from="Area2D" to="." method="_on_area_2d_body_shape_entered"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

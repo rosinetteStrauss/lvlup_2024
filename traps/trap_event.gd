@@ -2,17 +2,27 @@ extends RigidBody2D
 
 signal hit
 
-# Called when the node enters the scene tree for the first time.
+var is_in_area = false 
+
 func _ready():
-	pass # Replace with function body.
+	$".".visible = false
 
+func _on_input_manager_activate_event_jec(trap_id):
+	$".".visible = true
+	check_if_trapped()
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
-
-
-func _on_area_2d_body_shape_entered(body_rid, body, body_shape_index, local_shape_index):
-	if body.name == "player_manager":
+func check_if_trapped():
+	if is_in_area && $".".visible:
 		hit.emit()
-		queue_free()
+		#queue_free()
+
+func _on_area_2d_body_entered(body):
+	if body.name == "player_manager":
+		is_in_area = true
+		check_if_trapped()
+
+func _on_area_2d_body_exited(body):
+	if body.name == "player_manager":
+		is_in_area = false
+		check_if_trapped()
+

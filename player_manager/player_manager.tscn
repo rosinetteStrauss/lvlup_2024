@@ -75,6 +75,7 @@ animations = [{
 }]
 
 [node name="player_manager" type="CharacterBody2D"]
+position = Vector2(91, 0)
 script = ExtResource("1_n1ham")
 metadata/_edit_group_ = true
 

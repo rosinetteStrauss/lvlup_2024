@@ -113,6 +113,7 @@ func _on_objective_zone_body_entered(body):
 #signal body_exited Objective_zone
 func _on_objective_zone_body_exited(body):
 	is_in_objective_zone = false
+<<<<<<< Updated upstream
 	reset_timer()
 
 func start_timer():
@@ -123,4 +124,6 @@ func reset_timer():
 
 func objective_validated():
 	print("objective ok. BRAVO")
+=======
 	print(is_in_objective_zone)
+>>>>>>> Stashed changes

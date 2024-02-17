@@ -28,9 +28,21 @@ func new_round():
 	# reset shared traps
 	# reset timer
 	# ...
+	print("test")
 	pass
 
 func detect_end_game():
 	var crt_player = "jin"
 	end_game_hud.emit(crt_player)
 	end_game_ctrl.emit(false) # is_player_active
+
+func _on_trap_event_hit():
+	new_round()
+
+
+func _on_hud_end_timeout():
+	new_round()
+
+
+func _on_trap_own_hit_own():
+	new_round()

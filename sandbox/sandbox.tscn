@@ -14,6 +14,7 @@ ground_middle_y = 330
 
 [node name="jec" parent="." instance=ExtResource("2_6lgle")]
 position = Vector2(520, 200)
+scale = Vector2(0.3, 0.3)
 
 [node name="jin" parent="." instance=ExtResource("2_6lgle")]
 position = Vector2(248, 200)
