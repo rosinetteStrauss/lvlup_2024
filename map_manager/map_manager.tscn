@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://ek6axo7146p2" path="res://sprites/Background_neutre.png" id="2_2gu2p"]
 [ext_resource type="Texture2D" uid="uid://6nc2w2sh7m7u" path="res://sprites/plateforme_haut.png" id="2_r5k4c"]
 [ext_resource type="Texture2D" uid="uid://bu3tc07b1nk2r" path="res://sprites/plateform_bas.png" id="3_0rnfo"]
-[ext_resource type="PackedScene" uid="uid://cpyondstlttdo" path="res://traps/trap_shared.tscn" id="3_iigor"]
+[ext_resource type="PackedScene" uid="uid://lfekjqniqoq" path="res://traps/trap_shared.tscn" id="3_iigor"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_274pp"]
 size = Vector2(369, 51)
@@ -14,7 +14,7 @@ size = Vector2(369, 51)
 size = Vector2(564.5, 43)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5k5h1"]
-size = Vector2(768, 194)
+size = Vector2(698, 44)
 
 [node name="map_manager" type="Node2D"]
 script = ExtResource("1_oqfxn")
@@ -76,5 +76,5 @@ collision_layer = 7
 collision_mask = 7
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ground_bottom/StaticBody2D"]
-position = Vector2(-5, 271)
+position = Vector2(0, 196)
 shape = SubResource("RectangleShape2D_5k5h1")

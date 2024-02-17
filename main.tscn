@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://bpp6acfuarxbd"]
+[gd_scene load_steps=12 format=3 uid="uid://bpp6acfuarxbd"]
 
 [ext_resource type="PackedScene" uid="uid://drcep0letwysv" path="res://game_manager/game_manager.tscn" id="1_35k2w"]
 [ext_resource type="PackedScene" uid="uid://mnpudgs7sid2" path="res://map_manager/map_manager.tscn" id="2_bucau"]
@@ -6,14 +6,10 @@
 [ext_resource type="PackedScene" uid="uid://b5ncaen1akhx0" path="res://input_manager/input_manager.tscn" id="5_iyfn2"]
 [ext_resource type="PackedScene" uid="uid://bl0xfys5egxes" path="res://traps/trap_own.tscn" id="6_gckfj"]
 [ext_resource type="PackedScene" uid="uid://v30f5cg6yjxt" path="res://player_manager/player_manager.tscn" id="7_b5o52"]
-[ext_resource type="PackedScene" uid="uid://dh5euieyoj0us" path="res://HUD/hud_end_screen.tscn" id="8_8e6iq"]
+[ext_resource type="PackedScene" path="res://HUD/hud_end_screen.tscn" id="8_8e6iq"]
 [ext_resource type="PackedScene" uid="uid://csobuv8hrtemj" path="res://hud_ingame/Hud.tscn" id="9_8q2u5"]
 [ext_resource type="Script" path="res://ObjectiveZoneManager.gd" id="10_n8quv"]
-[ext_resource type="PackedScene" uid="uid://d3qacus6h8sfs" path="res://map_manager/objective_zone.tscn" id="10_wktuq"]
-[ext_resource type="PackedScene" uid="uid://dvkuqlx0ih1tl" path="res://traps/trap_event.tscn" id="12_082cb"]
-[ext_resource type="PackedScene" uid="uid://djxvywisjyeci" path="res://HUD/hud_end_screen.tscn" id="8_8e6iq"]
-[ext_resource type="PackedScene" uid="uid://csobuv8hrtemj" path="res://hud_ingame/Hud.tscn" id="9_8q2u5"]
-[ext_resource type="PackedScene" uid="uid://bk01jm5l2y6vj" path="res://map_manager/objective_zone.tscn" id="10_wktuq"]
+[ext_resource type="PackedScene" uid="uid://ceydjsus4bpb7" path="res://map_manager/objective_zone.tscn" id="10_wktuq"]
 [ext_resource type="PackedScene" path="res://traps/trap_event.tscn" id="12_tnrip"]
 
 [node name="main" type="Node"]
@@ -30,7 +26,7 @@ position = Vector2(142, 216)
 [node name="trap_own" parent="." instance=ExtResource("6_gckfj")]
 position = Vector2(71, 381)
 
-[node name="trap_event" parent="." instance=ExtResource("12_082cb")]
+[node name="trap_event" parent="." instance=ExtResource("12_tnrip")]
 
 [node name="Jec" parent="." instance=ExtResource("7_b5o52")]
 position = Vector2(112, 207)
@@ -47,9 +43,10 @@ is_jec = false
 
 [node name="ObjectiveZoneManager" type="Node" parent="."]
 script = ExtResource("10_n8quv")
+nb_zone = 1
 ground_middle_left_lim = 150
 ground_middle_right_lim = 670
-ground_middle_y = 150
+ground_middle_y = 200
 
 [node name="ObjectiveZone" parent="ObjectiveZoneManager" instance=ExtResource("10_wktuq")]
 position = Vector2(124, 73)
@@ -58,17 +55,14 @@ position = Vector2(124, 73)
 
 [connection signal="start_game" from="HUD_menu" to="game_manager" method="game_start"]
 [connection signal="activate_player" from="game_manager" to="input_manager" method="toggle_player_activity"]
+[connection signal="activate_player" from="game_manager" to="Jec" method="manage_visibility"]
 [connection signal="end_game_ctrl" from="game_manager" to="input_manager" method="toggle_player_activity"]
 [connection signal="end_game_ctrl" from="game_manager" to="Jec" method="manage_visibility"]
 [connection signal="end_game_hud" from="game_manager" to="HUD_end_screen" method="show_end_screen"]
 [connection signal="activate_event_jec" from="input_manager" to="trap_event" method="_on_input_manager_activate_event_jec"]
-[connection signal="hit_own" from="trap_own" to="game_manager" method="_on_trap_own_hit_own"]
-[connection signal="hit" from="trap_event" to="game_manager" method="_on_trap_event_hit"]
-[connection signal="activate_player" from="game_manager" to="Jec" method="manage_visibility"]
-[connection signal="new_round_signal" from="game_manager" to="input_manager" method="toggle_crt_player"]
-[connection signal="new_stage_signal" from="game_manager" to="input_manager" method="toggle_crt_player"]
 [connection signal="land_trap_jec" from="input_manager" to="Jec" method="_on_input_manager_land_trap_jec"]
 [connection signal="move_jec" from="input_manager" to="Jec" method="_on_input_manager_move_jec"]
+[connection signal="hit" from="trap_event" to="game_manager" method="_on_trap_event_hit"]
 [connection signal="body_entered" from="ObjectiveZoneManager/ObjectiveZone" to="Jec" method="_on_objective_zone_body_entered"]
 [connection signal="body_exited" from="ObjectiveZoneManager/ObjectiveZone" to="Jec" method="_on_objective_zone_body_exited"]
 [connection signal="hit" from="TrapEvent" to="game_manager" method="check_end_round"]

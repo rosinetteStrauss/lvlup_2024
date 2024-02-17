@@ -30,11 +30,12 @@ func deploy_zone():
 	#TODO : extend the random placement to other layers
 	var crt_zone
 	var x_coor
+	var x_l
 	var x_lim_left = ground_middle_left_lim + spawn_offset_x
 	var x_lim_right = ground_middle_right_lim - spawn_offset_x
-	var y_coor = ground_middle_y - spawn_offset_y
 	for i in range(nb_zone):
 		x_coor = randi_range(x_lim_left, x_lim_right)
+		var y_coor = ground_middle_y - spawn_offset_y
 		crt_zone = objective_zone_template.duplicate()
 		crt_zone.position = Vector2(x_coor, y_coor)
 		get_tree().root.add_child.call_deferred(crt_zone)
