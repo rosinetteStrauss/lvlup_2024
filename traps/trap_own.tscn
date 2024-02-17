@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://bl0xfys5egxes"]
 
-[ext_resource type="Texture2D" uid="uid://dkid5lk7i4ohk" path="res://sprites/placeholder/trap.png" id="1_7rqw2"]
+[ext_resource type="Texture2D" uid="uid://bkrbtvk6ub5w2" path="res://sprites/placeholder/trap_own.png" id="1_7rqw2"]
 
 [sub_resource type="GDScript" id="GDScript_00idq"]
 script/source = "extends RigidBody2D
