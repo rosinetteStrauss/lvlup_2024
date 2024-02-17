@@ -10,11 +10,14 @@ var jumping = false
 @export var friction = 0.7
 
 var trap_own_template
+@export var max_trap_own = 3
+var available_trap_own
 
 var is_in_objective_zone = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	available_trap_own = max_trap_own
 	trap_own_template = get_node("trap_own")
 	trap_own_template.visible = false
 	current_velocity = Vector2.ZERO
@@ -54,10 +57,12 @@ func move(left, right, jump):
 		jumping = true
 
 func deploy_trap():
-	var t = trap_own_template.duplicate()
-	t.set_global_position(global_position)
-	get_tree().root.add_child(t)
-	t.visible = true
+	if available_trap_own > 0:
+		available_trap_own -= 1
+		var t = trap_own_template.duplicate()
+		t.set_global_position(global_position)
+		get_tree().root.add_child(t)
+		t.visible = true
 
 func _on_input_manager_move_jec(left, right, jump):
 	move(left, right, jump)
