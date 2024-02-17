@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://v30f5cg6yjxt"]
+[gd_scene load_steps=14 format=3 uid="uid://v30f5cg6yjxt"]
 
 [ext_resource type="Texture2D" uid="uid://dp16mtcu10rsy" path="res://sprites/placeholder/active.png" id="1_54ol1"]
 [ext_resource type="Script" path="res://player_manager/player_manager.gd" id="1_n1ham"]
@@ -7,7 +7,9 @@
 [ext_resource type="Texture2D" uid="uid://kf8rdtnv43sd" path="res://sprites/eco_mid.png" id="4_88a0c"]
 [ext_resource type="Texture2D" uid="uid://bdpknnjm1816s" path="res://sprites/eco_saut.png" id="5_0hprx"]
 [ext_resource type="Texture2D" uid="uid://bfgg21gxbbcr2" path="res://sprites/indu_saut.png" id="5_dese7"]
+[ext_resource type="Texture2D" uid="uid://ck46jyrcim4r1" path="res://sprites/eco_droite.png" id="6_2g8t8"]
 [ext_resource type="Texture2D" uid="uid://berptrv0gk6a8" path="res://sprites/indi_gauche.png" id="6_gey2j"]
+[ext_resource type="Texture2D" uid="uid://b2fu11i2v6yiw" path="res://sprites/eco_gauche.png" id="7_87lww"]
 [ext_resource type="Texture2D" uid="uid://dcbj8mvckihhw" path="res://sprites/indu_droite.png" id="7_ugucr"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_swl8g"]
@@ -28,16 +30,16 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("6_gey2j")
+"texture": ExtResource("6_2g8t8")
 }, {
 "duration": 1.0,
-"texture": ExtResource("4_6ue4m")
+"texture": ExtResource("4_88a0c")
 }, {
 "duration": 1.0,
-"texture": ExtResource("7_ugucr")
+"texture": ExtResource("7_87lww")
 }, {
 "duration": 1.0,
-"texture": ExtResource("4_6ue4m")
+"texture": ExtResource("4_88a0c")
 }],
 "loop": true,
 "name": &"eco_walk",
@@ -89,5 +91,6 @@ shape = SubResource("RectangleShape2D_swl8g")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_86hj7")
-animation = &"eco_jump"
-frame_progress = 0.307377
+animation = &"eco_walk"
+frame = 1
+frame_progress = 0.536719
