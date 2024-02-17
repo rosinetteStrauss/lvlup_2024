@@ -17,12 +17,12 @@ func check_if_trapped():
 		#queue_free()
 
 func _on_area_2d_body_entered(body):
-	if body.name == "player_manager":
+	if body.name == "Jec" || body.name == "Jin":
 		is_in_area = true
 		check_if_trapped()
 
 func _on_area_2d_body_exited(body):
-	if body.name == "player_manager":
+	if body.name == "Jec" || body.name == "Jin":
 		is_in_area = false
 		check_if_trapped()
 

@@ -18,6 +18,7 @@ var available_trap_own
 var is_in_objective_zone = false
 var is_player_active = false
 @export var is_jec = true
+var crt_player_is_eco
 
 @export var time_to_validate_objective = 10.0
 var countdown_timeout = 1
@@ -38,7 +39,8 @@ func _ready():
 	current_gravity = 0
 	currently_active = active_at_start
 	screen_size = get_viewport_rect().size
-	$trap_own.is_eco_player(true)
+	crt_player_is_eco = is_jec
+	$trap_own.is_eco_player(crt_player_is_eco)
 	manage_visibility(currently_active)
 
 func manage_visibility(is_active):
@@ -57,12 +59,18 @@ func _process(delta):
 		if jumping:
 			jumping = false
 		elif is_on_floor():
-			$AnimatedSprite2D.animation = "eco_walk"
+			if crt_player_is_eco:
+				$AnimatedSprite2D.animation = "eco_walk"
+			else:
+				$AnimatedSprite2D.animation = "indu_walk"
 			current_gravity = 0.1
 			current_velocity.y = 0
 		else:
 			current_gravity = gravity
-			$AnimatedSprite2D.animation = "eco_jump"
+			if crt_player_is_eco:
+				$AnimatedSprite2D.animation = "eco_jump"
+			else:
+				$AnimatedSprite2D.animation = "indu_jump"
 		current_velocity.x = (current_velocity.x * (1-friction))
 		current_velocity.y += current_gravity
 		position += current_velocity
@@ -125,3 +133,14 @@ func reset_timer():
 func objective_validated():
 	print("objective ok. BRAVO")
 	print(is_in_objective_zone)
+
+func configure_new_round():
+	crt_player_is_eco = !crt_player_is_eco
+	$trap_own.is_eco_player(crt_player_is_eco)
+	reset_timer()
+
+func configure_new_stage():
+	crt_player_is_eco = !crt_player_is_eco
+	$trap_own.is_eco_player(crt_player_is_eco)
+	reset_timer()
+	
