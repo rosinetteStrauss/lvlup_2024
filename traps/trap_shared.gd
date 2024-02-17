@@ -28,3 +28,8 @@ func my_set_position(target):
 
 func activate_trap():
 	emit_signal("damage_area", position.x, position.y, width, height)
+
+# signal new round or new stage
+func reset_traps():
+	#TODO implement
+	pass

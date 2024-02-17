@@ -67,3 +67,9 @@ func _process(delta):
 
 func toggle_player_activity(is_active):
 	is_player_active = is_active
+
+func toggle_crt_player():
+	if activ_player == player_name.JEC:
+		activ_player = player_name.JIN
+	else:
+		activ_player = player_name.JEC

@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://lfekjqniqoq"]
+[gd_scene load_steps=4 format=3 uid="uid://cpyondstlttdo"]
 
 [ext_resource type="Script" path="res://traps/trap_shared.gd" id="1_50ror"]
 [ext_resource type="Texture2D" uid="uid://b4vsjavc6uvcg" path="res://sprites/piege-commun-poser.png" id="2_ox58p"]

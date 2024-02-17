@@ -17,6 +17,7 @@ var available_trap_own
 
 var is_in_objective_zone = false
 var is_player_active = false
+@export var is_jec = true
 
 @export var time_to_validate_objective = 10.0
 var countdown_timeout = 1

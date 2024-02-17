@@ -1,14 +1,18 @@
 extends Node
 
 signal activate_player
-signal end_round
-signal end_stage
+signal new_round_signal
+signal new_stage_signal
 signal end_game_hud
 signal end_game_ctrl
+signal all_objectives_done
+
+var round_counter
+var is_first_stage
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	is_first_stage = true
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -18,20 +22,35 @@ func _process(delta):
 
 func game_start():
 	# instantiate everything
-	print("boup")
+	round_counter = 0
 	activate_player.emit(true)
 
+# signal timeout + player killed
+func check_end_round():
+	if round_counter >= 6:
+		#TODO give winner as input
+		check_end_game()
+	else:
+		new_round()
 
-# signal end_round from game_manager?
+# signal all_objectives_done
+func check_end_game():
+	if is_first_stage:
+		new_stage()
+	else:
+		launch_end_game()
+	
+
 func new_round():
-	# swap player
-	# reset shared traps
-	# reset timer
-	# ...
-	print("test")
-	pass
+	round_counter += 1
+	new_round_signal.emit()
+	
+func new_stage():
+	is_first_stage = false
+	new_stage_signal.emit()
 
-func detect_end_game():
+func launch_end_game():
+	#TODO define who has won
 	var crt_player = "jin"
 	end_game_hud.emit(crt_player)
 	end_game_ctrl.emit(false) # is_player_active
