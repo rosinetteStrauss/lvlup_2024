@@ -11,6 +11,8 @@ var jumping = false
 
 var trap_own_template
 
+var is_in_objective_zone = false
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	trap_own_template = get_node("trap_own")
@@ -65,3 +67,13 @@ func _on_input_manager_move_jin(left, right, jump):
 
 func _on_input_manager_land_trap_jec():
 	deploy_trap()
+
+#signal body_entered Objective_zone
+func _on_objective_zone_body_entered(body):
+	is_in_objective_zone = true
+	print(is_in_objective_zone)
+
+#signal body_exited Objective_zone
+func _on_objective_zone_body_exited(body):
+	is_in_objective_zone = false
+	print(is_in_objective_zone)

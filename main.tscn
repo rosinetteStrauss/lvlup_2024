@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://bpp6acfuarxbd"]
+[gd_scene load_steps=11 format=3 uid="uid://bpp6acfuarxbd"]
 
 [ext_resource type="PackedScene" uid="uid://drcep0letwysv" path="res://game_manager/game_manager.tscn" id="1_35k2w"]
 [ext_resource type="Script" path="res://main.gd" id="1_fuqd2"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://v30f5cg6yjxt" path="res://player_manager/player_manager.tscn" id="7_b5o52"]
 [ext_resource type="PackedScene" uid="uid://djxvywisjyeci" path="res://HUD/hud_end_screen.tscn" id="8_8e6iq"]
 [ext_resource type="PackedScene" uid="uid://csobuv8hrtemj" path="res://hud_ingame/Hud.tscn" id="9_8q2u5"]
+[ext_resource type="PackedScene" uid="uid://bk01jm5l2y6vj" path="res://map_manager/objective_zone.tscn" id="10_wktuq"]
 
 [node name="main" type="Node"]
 script = ExtResource("1_fuqd2")
@@ -31,9 +32,11 @@ position = Vector2(112, 207)
 
 [node name="Hud" parent="." instance=ExtResource("9_8q2u5")]
 
+[node name="ObjectiveZone" parent="." instance=ExtResource("10_wktuq")]
+position = Vector2(444, 73)
+
 [connection signal="start_game" from="HUD_menu" to="game_manager" method="game_start"]
 [connection signal="activate_player" from="game_manager" to="input_manager" method="toggle_player_activity"]
 [connection signal="end_game" from="game_manager" to="HUD_end_screen" method="show_end_screen"]
-[connection signal="activate_own_jec" from="input_manager" to="player_manager" method="_on_input_manager_activate_own_jec"]
 [connection signal="land_trap_jec" from="input_manager" to="player_manager" method="_on_input_manager_land_trap_jec"]
 [connection signal="move_jec" from="input_manager" to="player_manager" method="_on_input_manager_move_jec"]
