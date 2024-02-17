@@ -1,24 +1,31 @@
-[gd_scene load_steps=3 format=3 uid="uid://mnpudgs7sid2"]
+[gd_scene load_steps=5 format=3 uid="uid://mnpudgs7sid2"]
 
-[ext_resource type="Texture2D" uid="uid://blgepi040i4te" path="res://sprites/plateforme_centrale.png" id="1_gf7df"]
+[ext_resource type="Texture2D" uid="uid://c51kri1ieqbvp" path="res://sprites/placeholder/ground_horizontal.png" id="1_h0u1u"]
+[ext_resource type="Script" path="res://map_manager/map_manager.gd" id="1_oqfxn"]
+[ext_resource type="PackedScene" uid="uid://lfekjqniqoq" path="res://traps/trap_shared.tscn" id="3_iigor"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_p0fau"]
-size = Vector2(648, 80)
+size = Vector2(543, 80)
 
 [node name="map_manager" type="Node2D"]
+script = ExtResource("1_oqfxn")
 
 [node name="ground_middle" type="Node2D" parent="."]
+position = Vector2(-210, 30)
+metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="ground_middle"]
-position = Vector2(573.625, 328.875)
-scale = Vector2(0.999615, 0.541391)
-texture = ExtResource("1_gf7df")
+position = Vector2(626.5, 328.875)
+scale = Vector2(0.836672, 0.541391)
+texture = ExtResource("1_h0u1u")
 metadata/_edit_group_ = true
 
 [node name="StaticBody2D" type="StaticBody2D" parent="ground_middle"]
-collision_layer = 3
-collision_mask = 3
+collision_layer = 7
+collision_mask = 7
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ground_middle/StaticBody2D"]
-position = Vector2(574, 329)
+position = Vector2(626.5, 329)
 shape = SubResource("RectangleShape2D_p0fau")
+
+[node name="trap_shared" parent="." instance=ExtResource("3_iigor")]
