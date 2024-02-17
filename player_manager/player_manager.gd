@@ -1,5 +1,7 @@
 extends CharacterBody2D
 
+var screen_size
+
 @export var active_at_start = true
 var currently_active
 var current_velocity
@@ -23,6 +25,7 @@ func _ready():
 	current_velocity = Vector2.ZERO
 	current_gravity = gravity
 	currently_active = active_at_start
+	screen_size = get_viewport_rect().size
 	manage_visibility()
 
 func manage_visibility():
@@ -35,22 +38,35 @@ func manage_visibility():
 
 func _process(delta):
 	if jumping:
+		$AnimatedSprite2D.animation = "eco_jump"
 		jumping = false
 	elif is_on_floor():
+		$AnimatedSprite2D.animation = "eco_walk"
 		current_gravity = 0.1
 		current_velocity.y = 0
 	else:
 		current_gravity = gravity
 	current_velocity.x = (current_velocity.x * (1-friction))
 	current_velocity.y += current_gravity
-	position += current_velocity
+	position += current_velocity #* delta
+	
+	if current_velocity.length() > 0:
+		$AnimatedSprite2D.play()
+	else:
+		$AnimatedSprite2D.stop()
+	
+	# prevent movement exceed screen    
+	position = position.clamp(Vector2.ZERO, screen_size)
+	   
 	move_and_slide()
 	
 
 func move(left, right, jump):
 	if left == 1:
+		$AnimatedSprite2D.flip_h = true
 		current_velocity.x -= speed
 	if right == 1:
+		$AnimatedSprite2D.flip_h = false
 		current_velocity.x += speed
 	if jump == 1 and is_on_floor():
 		current_velocity.y -= speed
