@@ -23,6 +23,9 @@ var is_player_active = false
 var countdown_timeout = 1
 var timer = Timer.new()
 
+signal objective_complete
+var current_objective
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	timer.autostart = false
@@ -109,11 +112,13 @@ func _on_input_manager_land_trap_jec():
 #signal body_entered Objective_zone
 func _on_objective_zone_body_entered(body):
 	is_in_objective_zone = true
+	current_objective = body
 	start_timer()
 
 #signal body_exited Objective_zone
 func _on_objective_zone_body_exited(body):
 	is_in_objective_zone = false
+	current_objective = null
 	reset_timer()
 
 func start_timer():
@@ -123,5 +128,5 @@ func reset_timer():
 	timer.stop()
 
 func objective_validated():
-	print("objective ok. BRAVO")
-	print(is_in_objective_zone)
+	timer.stop()
+	emit_signal("objective_complete")
