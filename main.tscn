@@ -28,6 +28,7 @@ position = Vector2(142, 216)
 
 [node name="player_manager" parent="." instance=ExtResource("7_b5o52")]
 position = Vector2(112, 207)
+scale = Vector2(0.2, 0.2)
 
 [node name="HUD_end_screen" parent="." instance=ExtResource("8_8e6iq")]
 

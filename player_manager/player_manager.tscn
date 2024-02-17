@@ -1,17 +1,53 @@
-[gd_scene load_steps=5 format=3 uid="uid://v30f5cg6yjxt"]
+[gd_scene load_steps=10 format=3 uid="uid://v30f5cg6yjxt"]
 
 [ext_resource type="Texture2D" uid="uid://dp16mtcu10rsy" path="res://sprites/placeholder/active.png" id="1_54ol1"]
 [ext_resource type="Script" path="res://player_manager/player_manager.gd" id="1_n1ham"]
 [ext_resource type="PackedScene" uid="uid://bl0xfys5egxes" path="res://traps/trap_own.tscn" id="3_xxdhr"]
+[ext_resource type="Texture2D" uid="uid://oxnkxj3h8qp7" path="res://sprites/indu_mid.png" id="4_6ue4m"]
+[ext_resource type="Texture2D" uid="uid://bfgg21gxbbcr2" path="res://sprites/indu_saut.png" id="5_dese7"]
+[ext_resource type="Texture2D" uid="uid://berptrv0gk6a8" path="res://sprites/indi_gauche.png" id="6_gey2j"]
+[ext_resource type="Texture2D" uid="uid://dcbj8mvckihhw" path="res://sprites/indu_droite.png" id="7_ugucr"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_swl8g"]
 size = Vector2(108, 156)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_86hj7"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_6ue4m")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_dese7")
+}],
+"loop": true,
+"name": &"indu_jump",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_gey2j")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_6ue4m")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_ugucr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_6ue4m")
+}],
+"loop": true,
+"name": &"indu_walk",
+"speed": 5.0
+}]
 
 [node name="player_manager" type="CharacterBody2D"]
 script = ExtResource("1_n1ham")
 metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+visible = false
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("1_54ol1")
 
@@ -20,3 +56,9 @@ scale = Vector2(0.5, 0.5)
 shape = SubResource("RectangleShape2D_swl8g")
 
 [node name="trap_own" parent="." instance=ExtResource("3_xxdhr")]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_86hj7")
+animation = &"indu_jump"
+frame = 1
+frame_progress = 0.468912
