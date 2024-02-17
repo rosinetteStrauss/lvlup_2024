@@ -18,6 +18,7 @@ signal activate_event_jin(trap_id)
 signal activate_own_jin(trap_id)
 
 var activ_player
+var is_player_active = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -26,39 +27,43 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	var move_input = [0,0,0]	#left, right, jump : --> boolean, 1 if trigger
-	if activ_player == player_name.JEC:
-		if Input.is_action_pressed("jec_left"):
-			move_input[input_move.LEFT] = 1
-		if Input.is_action_pressed("jec_right"):
-			move_input[input_move.RIGHT] = 1
-		if Input.is_action_pressed("jec_jump"):
-			move_input[input_move.JUMP] = 1
-		if Input.is_action_just_pressed("jec_land_trap"):
-			emit_signal("land_trap_jec")
-		#TODO : manage multipleinput associated with same action. If not possible, create multiple signals
-		if Input.is_action_just_pressed("jec_shared_trap_activation"):
-			emit_signal("activate_shared_jec", 0)
-		if Input.is_action_just_pressed("jec_event_trap_activation"):
-			emit_signal("activate_event_jec", 0)
-		if Input.is_action_just_pressed("jec_own_trap_activation"):
-			emit_signal("activate_own_jec", 0)
-		emit_signal("move_jec", move_input[0], move_input[1], move_input[2])
-	else:
-		if Input.is_action_pressed("jin_left"):
-			move_input[input_move.LEFT] = 1
-		if Input.is_action_pressed("jin_right"):
-			move_input[input_move.RIGHT] = 1
-		if Input.is_action_pressed("jin_jump"):
-			move_input[input_move.JUMP] = 1
-		if Input.is_action_just_pressed("jin_land_trap"):
-			emit_signal("land_trap_jin")
-		if Input.is_action_just_pressed("jin_shared_trap_activation"):
-			emit_signal("activate_shared_jin", 0)
-		if Input.is_action_just_pressed("jin_event_trap_activation"):
-			emit_signal("activate_event_jin", 0)
-		if Input.is_action_just_pressed("jin_own_trap_activation"):
-			emit_signal("activate_own_jin", 0)
-		emit_signal("move_jin", move_input[0], move_input[1], move_input[2])
+	if is_player_active:
+		if activ_player == player_name.JEC:
+			if Input.is_action_pressed("jec_left"):
+				move_input[input_move.LEFT] = 1
+			if Input.is_action_pressed("jec_right"):
+				move_input[input_move.RIGHT] = 1
+			if Input.is_action_pressed("jec_jump"):
+				move_input[input_move.JUMP] = 1
+			if Input.is_action_just_pressed("jec_land_trap"):
+				emit_signal("land_trap_jec")
+			#TODO : manage multipleinput associated with same action. If not possible, create multiple signals
+			if Input.is_action_just_pressed("jec_shared_trap_activation"):
+				emit_signal("activate_shared_jec", 0)
+			if Input.is_action_just_pressed("jec_event_trap_activation"):
+				emit_signal("activate_event_jec", 0)
+			if Input.is_action_just_pressed("jec_own_trap_activation"):
+				emit_signal("activate_own_jec", 0)
+			emit_signal("move_jec", move_input[0], move_input[1], move_input[2])
+		else:
+			if Input.is_action_pressed("jin_left"):
+				move_input[input_move.LEFT] = 1
+			if Input.is_action_pressed("jin_right"):
+				move_input[input_move.RIGHT] = 1
+			if Input.is_action_pressed("jin_jump"):
+				move_input[input_move.JUMP] = 1
+			if Input.is_action_just_pressed("jin_land_trap"):
+				emit_signal("land_trap_jin")
+			if Input.is_action_just_pressed("jin_shared_trap_activation"):
+				emit_signal("activate_shared_jin", 0)
+			if Input.is_action_just_pressed("jin_event_trap_activation"):
+				emit_signal("activate_event_jin", 0)
+			if Input.is_action_just_pressed("jin_own_trap_activation"):
+				emit_signal("activate_own_jin", 0)
+			emit_signal("move_jin", move_input[0], move_input[1], move_input[2])
 
 #TODO : obective completion and destruction are managed with input? If so add some code here
 #			Can be a simple timer upon being in the zone
+
+func toggle_player_activity():
+	is_player_active = !is_player_active
