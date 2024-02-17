@@ -1,11 +1,9 @@
 [gd_scene load_steps=3 format=3 uid="uid://drcep0letwysv"]
 
-[ext_resource type="Script" path="res://utils.gd" id="1_pa3b8"]
+[ext_resource type="Script" path="res://game_manager/game_manager.gd" id="1_pa3b8"]
 [ext_resource type="Script" path="res://game_manager/player_tracker.gd" id="2_sofs1"]
 
 [node name="game_manager" type="Node2D"]
-
-[node name="utils" type="Node2D" parent="."]
 script = ExtResource("1_pa3b8")
 
 [node name="player_tracker" type="Node2D" parent="."]
