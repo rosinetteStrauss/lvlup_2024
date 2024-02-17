@@ -16,6 +16,8 @@ var ground_below
 
 var trap_shared_template
 
+var shared_traps = []
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -30,6 +32,7 @@ func _process(delta):
 
 func reset_map():
 	#TODO : anything that may be required at the very first start
+	shared_traps.clear()
 	deploy_shared_trap()
 
 func deploy_shared_trap():
@@ -44,5 +47,16 @@ func deploy_shared_trap():
 		x_coor = randi_range(x_lim_left, x_lim_right)
 		trap = trap_shared_template.duplicate()
 		trap.my_set_position(Vector2(x_coor, y_coor))
-		get_tree().root.add_child.call_deferred(trap)
+		add_child.call_deferred(trap)
 		trap.visible = true
+		shared_traps.append(trap)
+
+func execute_trap():
+	var t
+	for index in shared_traps.size():
+		t = shared_traps[index]
+		t.activate_trap()
+
+
+func _on_input_manager_activate_shared_jec(trap_id):
+	execute_trap()

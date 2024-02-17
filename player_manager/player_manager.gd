@@ -82,3 +82,4 @@ func _on_objective_zone_body_entered(body):
 func _on_objective_zone_body_exited(body):
 	is_in_objective_zone = false
 	print(is_in_objective_zone)
+

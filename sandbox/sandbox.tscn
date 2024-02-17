@@ -23,5 +23,6 @@ active_at_start = false
 position = Vector2(-1, -1)
 is_player_active = true
 
+[connection signal="activate_shared_jec" from="input_manager" to="map_manager" method="_on_input_manager_activate_shared_jec"]
 [connection signal="land_trap_jec" from="input_manager" to="jec" method="_on_input_manager_land_trap_jec"]
 [connection signal="move_jec" from="input_manager" to="jec" method="_on_input_manager_move_jec"]
