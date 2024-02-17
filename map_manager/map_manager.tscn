@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://lfekjqniqoq" path="res://traps/trap_shared.tscn" id="3_iigor"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_p0fau"]
-size = Vector2(543, 80)
+size = Vector2(543, 81)
 
 [node name="map_manager" type="Node2D"]
 script = ExtResource("1_oqfxn")
@@ -13,7 +13,6 @@ ground_middle_right_lim = -1
 
 [node name="ground_middle" type="Node2D" parent="."]
 position = Vector2(-210, 30)
-metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="ground_middle"]
 position = Vector2(626.5, 328.875)
@@ -26,7 +25,7 @@ collision_layer = 7
 collision_mask = 7
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ground_middle/StaticBody2D"]
-position = Vector2(626.5, 329)
+position = Vector2(626.5, 328.5)
 shape = SubResource("RectangleShape2D_p0fau")
 
 [node name="trap_shared" parent="." instance=ExtResource("3_iigor")]

@@ -4,9 +4,10 @@ extends CharacterBody2D
 var currently_active
 var current_velocity
 var current_gravity
+var jumping = false
 @export var speed = 20
 @export var gravity = 1
-@export var friction = 0.9
+@export var friction = 0.7
 
 var trap_own_template
 
@@ -28,13 +29,16 @@ func manage_visibility():
 		$CollisionShape2D.disabled = true
 
 func _process(delta):
-	position += current_velocity
-	current_velocity.x = (current_velocity.x * (1-friction))
-	current_velocity.y += current_gravity
-	if is_on_floor():
-		current_gravity = 0
+	if jumping:
+		jumping = false
+	elif is_on_floor():
+		current_gravity = 0.1
+		current_velocity.y = 0
 	else:
 		current_gravity = gravity
+	current_velocity.x = (current_velocity.x * (1-friction))
+	current_velocity.y += current_gravity
+	position += current_velocity
 	move_and_slide()
 	
 
@@ -45,6 +49,7 @@ func move(left, right, jump):
 		current_velocity.x += speed
 	if jump == 1 and is_on_floor():
 		current_velocity.y -= speed
+		jumping = true
 
 func deploy_trap():
 	var t = trap_own_template.duplicate()

@@ -25,4 +25,3 @@ is_player_active = true
 
 [connection signal="land_trap_jec" from="input_manager" to="jec" method="_on_input_manager_land_trap_jec"]
 [connection signal="move_jec" from="input_manager" to="jec" method="_on_input_manager_move_jec"]
-[connection signal="move_jin" from="input_manager" to="jin" method="_on_input_manager_move_jin"]
