@@ -7,10 +7,10 @@
 [ext_resource type="PackedScene" uid="uid://b5ncaen1akhx0" path="res://input_manager/input_manager.tscn" id="5_iyfn2"]
 [ext_resource type="PackedScene" uid="uid://bl0xfys5egxes" path="res://traps/trap_own.tscn" id="6_gckfj"]
 [ext_resource type="PackedScene" uid="uid://v30f5cg6yjxt" path="res://player_manager/player_manager.tscn" id="7_b5o52"]
-[ext_resource type="PackedScene" uid="uid://djxvywisjyeci" path="res://HUD/hud_end_screen.tscn" id="8_8e6iq"]
+[ext_resource type="PackedScene" path="res://HUD/hud_end_screen.tscn" id="8_8e6iq"]
 [ext_resource type="PackedScene" uid="uid://csobuv8hrtemj" path="res://hud_ingame/Hud.tscn" id="9_8q2u5"]
 [ext_resource type="Script" path="res://ObjectiveZoneManager.gd" id="10_n8quv"]
-[ext_resource type="PackedScene" uid="uid://bk01jm5l2y6vj" path="res://map_manager/objective_zone.tscn" id="10_wktuq"]
+[ext_resource type="PackedScene" uid="uid://ceydjsus4bpb7" path="res://map_manager/objective_zone.tscn" id="10_wktuq"]
 
 [node name="main" type="Node"]
 script = ExtResource("1_fuqd2")
@@ -41,7 +41,7 @@ ground_middle_right_lim = 670
 ground_middle_y = 150
 
 [node name="ObjectiveZone" parent="ObjectiveZoneManager" instance=ExtResource("10_wktuq")]
-position = Vector2(-139, -111)
+position = Vector2(124, 73)
 
 [connection signal="start_game" from="HUD_menu" to="game_manager" method="game_start"]
 [connection signal="activate_player" from="game_manager" to="input_manager" method="toggle_player_activity"]
@@ -51,3 +51,5 @@ position = Vector2(-139, -111)
 [connection signal="end_game_hud" from="game_manager" to="HUD_end_screen" method="show_end_screen"]
 [connection signal="land_trap_jec" from="input_manager" to="player_manager" method="_on_input_manager_land_trap_jec"]
 [connection signal="move_jec" from="input_manager" to="player_manager" method="_on_input_manager_move_jec"]
+[connection signal="body_entered" from="ObjectiveZoneManager/ObjectiveZone" to="player_manager" method="_on_objective_zone_body_entered"]
+[connection signal="body_exited" from="ObjectiveZoneManager/ObjectiveZone" to="player_manager" method="_on_objective_zone_body_exited"]

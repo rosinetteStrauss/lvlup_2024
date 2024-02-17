@@ -37,3 +37,5 @@ func deploy_zone():
 		#crt_zone.my_set_position()
 		get_tree().root.add_child.call_deferred(crt_zone)
 		crt_zone.visible = true
+
+

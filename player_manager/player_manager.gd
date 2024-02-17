@@ -18,8 +18,18 @@ var available_trap_own
 var is_in_objective_zone = false
 var is_player_active = false
 
+@export var time_to_validate_objective = 10.0
+var countdown_timeout = 1
+var timer = Timer.new()
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	timer.autostart = false
+	timer.one_shot = false
+	timer.wait_time = time_to_validate_objective
+	timer.connect("timeout", self.objective_validated)
+	timer.stop()
+	add_child(timer)
 	available_trap_own = max_trap_own
 	trap_own_template = get_node("trap_own")
 	trap_own_template.visible = false
@@ -65,7 +75,6 @@ func _process(delta):
 		position = position.clamp(Vector2.ZERO, screen_size)
 		   
 		move_and_slide()
-	
 
 func move(left, right, jump):
 	if left == 1:
@@ -99,10 +108,22 @@ func _on_input_manager_land_trap_jec():
 #signal body_entered Objective_zone
 func _on_objective_zone_body_entered(body):
 	is_in_objective_zone = true
+	start_timer()
 	print(is_in_objective_zone)
 
 #signal body_exited Objective_zone
 func _on_objective_zone_body_exited(body):
 	is_in_objective_zone = false
+	reset_timer()
 	print(is_in_objective_zone)
 
+func start_timer():
+	print("starting")
+	timer.start()
+
+func reset_timer():
+	print("reseting")
+	timer.stop()
+
+func objective_validated():
+	print("objective ok. BRAVO")

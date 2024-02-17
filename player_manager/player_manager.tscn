@@ -93,3 +93,5 @@ shape = SubResource("RectangleShape2D_swl8g")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_86hj7")
 animation = &"eco_jump"
+
+[node name="Timer" type="Timer" parent="."]
