@@ -25,7 +25,7 @@ var crt_player_is_eco
 var countdown_timeout = 1
 var timer = Timer.new()
 
-signal objective_complete
+signal objective_complete(target)
 var current_objective
 
 # Called when the node enters the scene tree for the first time.
