@@ -15,6 +15,7 @@ var jumping = false
 var trap_own_template
 @export var max_trap_own = 3
 var available_trap_own
+var keybinding_trap_own = [KEY_J,KEY_K,KEY_L]
 
 var is_in_objective_zone = false
 var is_player_active = false
@@ -110,6 +111,7 @@ func deploy_trap():
 		t.scale = Vector2(1,1)
 		t.visible = true
 		t.set_trap_owner(is_jec)
+		t.set_keybinding(keybinding_trap_own[available_trap_own])
 		
 
 func _on_input_manager_move_jec(left, right, jump):

@@ -19,11 +19,20 @@ func start_game_timers(is_started):
 func _on_game_timer_timeout():
 	$second_timer.stop()
 	end_timeout.emit()
+	$game_timer.stop()
+	countdown_timeout = $game_timer.get_wait_time()
 
 func _on_second_timer_timeout():
 	countdown_timeout -= 1
 	if countdown_timeout <= 0:
 		countdown_timeout = $game_timer.get_wait_time()
+		$second_timer.stop()
+		pass
+	update_display_timer(0, 0)
+
+func update_display_timer(score_left, score_right):
+	$jec_bar.value += score_left * ponderation
+	$jin_bar.value += score_right * ponderation
 	$display_timer.set_text("Timer: " + str(countdown_timeout))
 
 func update_display_score(score_left, score_right):
@@ -51,3 +60,8 @@ func show_swap_msg(): #text
 func _on_swap_timer_timeout():
 	$SwapLabel.hide()
 	
+
+func start_timer():
+	$game_timer.start()
+	$second_timer.start()
+

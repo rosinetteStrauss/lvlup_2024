@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://bpp6acfuarxbd"]
+[gd_scene load_steps=12 format=3 uid="uid://cnicvu2mhcpop"]
 
 [ext_resource type="PackedScene" uid="uid://drcep0letwysv" path="res://game_manager/game_manager.tscn" id="1_35k2w"]
 [ext_resource type="PackedScene" uid="uid://mnpudgs7sid2" path="res://map_manager/map_manager.tscn" id="2_bucau"]
@@ -21,13 +21,8 @@ position = Vector2(0, 15)
 
 [node name="map_manager" parent="." instance=ExtResource("2_bucau")]
 spawn_offset_x = 20
-ground_top_left_lim = 180
-ground_top_right_lim = 545
-ground_top_y = 80
 ground_middle_right_lim = 650
 ground_middle_y = 240
-ground_bottom_right_lim = 715
-ground_bottom_y = 415
 
 [node name="input_manager" parent="." instance=ExtResource("5_iyfn2")]
 position = Vector2(142, 216)
@@ -61,14 +56,9 @@ ponderation = 10
 [node name="ObjectiveZoneManager" type="Node" parent="." groups=["eco", "indu"]]
 script = ExtResource("10_n8quv")
 nb_zone = 2
-ground_top_left_lim = 180
-ground_top_right_lim = 545
-ground_top_y = 80
 ground_middle_left_lim = 95
 ground_middle_right_lim = 650
 ground_middle_y = 240
-ground_bottom_right_lim = 715
-ground_bottom_y = 415
 
 [node name="ObjectiveZone" parent="ObjectiveZoneManager" instance=ExtResource("10_wktuq")]
 light_mask = 131072
@@ -98,11 +88,13 @@ position = Vector2(-254, 47)
 [connection signal="land_trap_jec" from="input_manager" to="Jec" method="_on_input_manager_land_trap_jec"]
 [connection signal="move_jec" from="input_manager" to="Jec" method="_on_input_manager_move_jec"]
 [connection signal="move_jin" from="input_manager" to="Jin" method="_on_input_manager_move_jin"]
+[connection signal="hit_own" from="trap_own" to="game_manager" method="_on_trap_own_hit_own"]
 [connection signal="hit" from="trap_event" to="game_manager" method="_on_trap_event_hit"]
 [connection signal="objective_complete" from="Jec" to="ObjectiveZoneManager" method="_on_jec_objective_complete"]
 [connection signal="objective_complete" from="Jec" to="ObjectiveZoneManager/ObjectiveZone" method="_on_jec_objective_complete"]
 [connection signal="objective_complete" from="Jin" to="ObjectiveZoneManager" method="_on_jin_objective_complete"]
 [connection signal="objective_complete" from="Jin" to="ObjectiveZoneManager/ObjectiveZone" method="_on_jin_objective_complete"]
+[connection signal="end_timeout" from="Hud" to="game_manager" method="_on_hud_end_timeout"]
 [connection signal="end_timeout" from="Hud" to="game_manager" method="check_end_round"]
 [connection signal="player_won_points" from="ObjectiveZoneManager" to="game_manager" method="_on_objective_zone_manager_player_won_points"]
 [connection signal="body_entered" from="ObjectiveZoneManager/ObjectiveZone" to="Jec" method="_on_objective_zone_body_entered"]

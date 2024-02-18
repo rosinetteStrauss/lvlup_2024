@@ -31,6 +31,7 @@ func game_start():
 	# instantiate everything
 	round_counter = 0
 	activate_player.emit(true)
+	$"../Hud".start_timer()
 
 # signal timeout + player killed
 func check_end_round():
