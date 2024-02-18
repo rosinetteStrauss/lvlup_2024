@@ -20,6 +20,7 @@ func _ready():
 	is_first_stage = true
 	score_jec = 0
 	score_jin = 0
+	$Music.play()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
