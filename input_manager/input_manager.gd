@@ -75,7 +75,6 @@ func toggle_crt_player():
 		activ_player = player_name.JIN
 	else:
 		activ_player = player_name.JEC
-	print("activ_player: " + str(activ_player))
 
 
 func _on_game_manager_new_stage_signal():

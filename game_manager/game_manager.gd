@@ -6,6 +6,7 @@ signal new_stage_signal
 signal end_game_hud
 signal end_game_ctrl
 signal all_objectives_done
+signal update_hud
 
 var round_counter
 var is_first_stage
@@ -33,12 +34,11 @@ func game_start():
 
 # signal timeout + player killed
 func check_end_round():
-	new_round()
-	'''if round_counter >= 6:
+	if round_counter >= 6:
 		#TODO give winner as input
 		check_end_game()
 	else:
-		new_round()'''
+		new_round()
 
 # signal all_objectives_done
 func check_end_game():
@@ -76,4 +76,4 @@ func _on_objective_zone_manager_player_won_points():
 		score_jec += 1
 	else:
 		score_jin += 1
-	#emit_signal("update_hud", score_jec, score_jin)
+	emit_signal("update_hud", score_jec, score_jin)

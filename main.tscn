@@ -43,6 +43,7 @@ time_to_validate_objective = 2.0
 [node name="HUD_end_screen" parent="." instance=ExtResource("8_8e6iq")]
 
 [node name="Hud" parent="." instance=ExtResource("9_8q2u5")]
+ponderation = 10
 
 [node name="ObjectiveZoneManager" type="Node" parent="."]
 script = ExtResource("10_n8quv")
@@ -65,6 +66,8 @@ position = Vector2(-254, 47)
 [connection signal="new_round_signal" from="game_manager" to="input_manager" method="_on_game_manager_new_round_signal"]
 [connection signal="new_round_signal" from="game_manager" to="Jec" method="_on_game_manager_new_round_signal"]
 [connection signal="new_round_signal" from="game_manager" to="Jin" method="_on_game_manager_new_round_signal"]
+[connection signal="new_round_signal" from="game_manager" to="Hud" method="_on_game_manager_new_round_signal"]
+[connection signal="update_hud" from="game_manager" to="Hud" method="_on_game_manager_update_hud"]
 [connection signal="activate_event_jec" from="input_manager" to="trap_event" method="_on_input_manager_activate_event_jec"]
 [connection signal="land_trap_jec" from="input_manager" to="Jec" method="_on_input_manager_land_trap_jec"]
 [connection signal="move_jec" from="input_manager" to="Jec" method="_on_input_manager_move_jec"]
