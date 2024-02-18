@@ -28,8 +28,6 @@ func _ready():
 func _process(delta):
 	var move_input = [0,0,0]	#left, right, jump : --> boolean, 1 if trigger
 	if is_player_active:
-		if Input.is_action_just_pressed("hello_there"):
-			toggle_crt_player()
 		if activ_player == player_name.JEC:
 			if Input.is_action_pressed("jec_left"):
 				move_input[input_move.LEFT] = 1
