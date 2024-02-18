@@ -71,5 +71,7 @@ func toggle_player_activity(is_active):
 func toggle_crt_player():
 	if activ_player == player_name.JEC:
 		activ_player = player_name.JIN
+		print("activ_player: " + str(activ_player))
 	else:
 		activ_player = player_name.JEC
+		print("activ_player: " + str(activ_player))

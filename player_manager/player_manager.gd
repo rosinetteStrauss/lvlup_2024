@@ -11,6 +11,7 @@ var jumping = false
 @export var gravity = 1
 @export var friction = 0.7
 
+
 var trap_own_template
 @export var max_trap_own = 3
 var available_trap_own
@@ -75,8 +76,12 @@ func _process(delta):
 			else:
 				$AnimatedSprite2D.animation = "indu_jump"
 		current_velocity.x = (current_velocity.x * (1-friction))
+		print("velo what: " + str(current_velocity.x))
 		current_velocity.y += current_gravity
 		position += current_velocity
+		print(position)
+		print(" ")
+		print(" ")
 			
 		if abs(current_velocity.x) > 0.001 || abs(current_velocity.y) > 0.2:
 			$AnimatedSprite2D.play()
@@ -90,12 +95,19 @@ func _process(delta):
 
 func move(left, right, jump):
 	if left == 1:
+		print("left")
 		$AnimatedSprite2D.flip_h = true
 		current_velocity.x -= speed
+		print("crt velocity x: " + str(current_velocity.x))
+		print("speed: " + str(speed))
 	if right == 1:
+		print("right")
 		$AnimatedSprite2D.flip_h = false
 		current_velocity.x += speed
+		print("crt velocity x: " + str(current_velocity.x))
+		print("speed: " + str(speed))
 	if jump == 1 and is_on_floor():
+		print("jump")
 		current_velocity.y -= speed
 		jumping = true
 
@@ -104,9 +116,12 @@ func deploy_trap():
 		available_trap_own -= 1
 		var t = trap_own_template.duplicate()
 		t.set_global_position(global_position)
+		t.hit_own.connect($"../game_manager"._on_trap_own_hit_own)
 		get_tree().root.add_child(t)
 		t.scale = Vector2(1,1)
 		t.visible = true
+		t.set_trap_owner(is_jec)
+		
 
 func _on_input_manager_move_jec(left, right, jump):
 	move(left, right, jump)
@@ -115,6 +130,9 @@ func _on_input_manager_move_jin(left, right, jump):
 	move(left, right, jump)
 
 func _on_input_manager_land_trap_jec():
+	deploy_trap()
+	
+func _on_input_manager_land_trap_jin():
 	deploy_trap()
 
 #signal body_entered Objective_zone
