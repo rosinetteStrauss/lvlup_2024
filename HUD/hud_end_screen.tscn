@@ -1,4 +1,4 @@
-[gd_scene load_steps=2 format=3 uid="uid://djxvywisjyeci"]
+[gd_scene load_steps=2 format=3 uid="uid://bdni3r28xkeql"]
 
 [ext_resource type="Script" path="res://HUD/hud_end_screen.gd" id="1_1oy2y"]
 
@@ -10,9 +10,9 @@ anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
 offset_left = -150.0
-offset_top = 100.0
+offset_top = 50.0
 offset_right = 150.0
-offset_bottom = 200.0
+offset_bottom = 150.0
 grow_horizontal = 2
 theme_override_font_sizes/font_size = 30
 text = "Congratulation"
@@ -26,9 +26,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -50.0
-offset_top = 10.0
+offset_top = 80.0
 offset_right = 50.0
-offset_bottom = 60.0
+offset_bottom = 130.0
 grow_horizontal = 2
 grow_vertical = 2
 text = "Restart"
@@ -40,12 +40,40 @@ anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
 offset_left = -50.0
-offset_top = -150.0
+offset_top = -90.0
 offset_right = 50.0
-offset_bottom = -100.0
+offset_bottom = -40.0
 grow_horizontal = 2
 grow_vertical = 0
 text = "Exit"
+
+[node name="roast" type="Label" parent="."]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -341.0
+offset_top = 149.0
+offset_right = 319.0
+offset_bottom = 280.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 30
+text = "Quand bien même ta vue m'est première,
+ta division ne m'offre aucun reste"
+vertical_alignment = 1
+
+[node name="signature" type="Label" parent="."]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -439.0
+offset_top = 217.0
+offset_right = 221.0
+offset_bottom = 348.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 30
+text = "Euclide"
+horizontal_alignment = 2
+vertical_alignment = 1
 
 [connection signal="pressed" from="RestartButton" to="." method="_on_restart_button_pressed"]
 [connection signal="pressed" from="ExitButton" to="." method="_on_exit_button_pressed"]
