@@ -137,7 +137,7 @@ func reset_timer():
 
 func objective_validated():
 	timer.stop()
-	emit_signal("objective_complete")
+	emit_signal("objective_complete", current_objective)
 
 func configure_new_round():
 	crt_player_is_eco = !crt_player_is_eco

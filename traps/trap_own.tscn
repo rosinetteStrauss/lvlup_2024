@@ -20,7 +20,7 @@ func is_eco_player(is_eco):
 	if is_eco:
 		$Sprite2D.texture = load(\"res://sprites/Piege-eco-poser.png\")
 	else:
-		$Sprite2D.texture = load(\"res://sprites/Piege-indu-poser.png\")
+		$Sprite2D.texture = load(\"res://sprites/Piege_indu-poser.png\")
 "
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_a8eaf"]
