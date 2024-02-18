@@ -124,18 +124,6 @@ func _on_input_manager_land_trap_jec():
 func _on_input_manager_land_trap_jin():
 	deploy_trap()
 
-#signal body_entered Objective_zone
-func _on_objective_zone_body_entered(body):
-	is_in_objective_zone = true
-	current_objective = body
-	start_timer()
-
-#signal body_exited Objective_zone
-func _on_objective_zone_body_exited(body):
-	is_in_objective_zone = false
-	current_objective = null
-	reset_timer()
-
 func start_timer():
 	timer.start()
 
@@ -144,7 +132,7 @@ func reset_timer():
 
 func objective_validated():
 	timer.stop()
-	emit_signal("objective_complete", current_objective)
+	emit_signal("objective_complete", self)
 
 func configure_new_round():
 	crt_player_is_eco = !crt_player_is_eco

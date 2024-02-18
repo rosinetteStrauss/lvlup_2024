@@ -65,6 +65,7 @@ func deploy_zone():
 				$ObjectiveZone/Sprite2D.texture = load("res://sprites/zone_indu1_light.png")
 			crt_zone = objective_zone_template.duplicate()
 			crt_zone.position = Vector2(x_coor, y_coor)
+			crt_zone.eco = player_is_eco
 			get_tree().root.add_child.call_deferred(crt_zone)
 			crt_zone.visible = true
 		player_is_eco = !player_is_eco

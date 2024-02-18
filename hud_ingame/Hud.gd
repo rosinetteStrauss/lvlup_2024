@@ -21,7 +21,6 @@ func _on_game_timer_timeout():
 	end_timeout.emit()
 
 func _on_second_timer_timeout():
-	print(countdown_timeout)
 	countdown_timeout -= 1
 	if countdown_timeout <= 0:
 		countdown_timeout = $game_timer.get_wait_time()
