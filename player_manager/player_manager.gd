@@ -140,13 +140,18 @@ func configure_new_round():
 	reset_timer()
 
 func configure_new_stage():
-	crt_player_is_eco = !crt_player_is_eco
+	crt_player_is_eco = false
 	$trap_own.is_eco_player(crt_player_is_eco)
 	reset_timer()
 
 
 func _on_game_manager_new_stage_signal():
-	pass # Replace with function body.
+	# we want to have jin beginning in 2nd stage
+	if crt_player_is_eco && currently_active:
+		currently_active = false
+	if not(crt_player_is_eco) && not(currently_active):
+		currently_active = true
+	manage_visibility(currently_active)
 
 
 func _on_game_manager_new_round_signal():

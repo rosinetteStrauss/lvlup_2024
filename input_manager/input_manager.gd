@@ -19,6 +19,7 @@ signal activate_own_jin(trap_id)
 
 var activ_player
 @export var is_player_active = false
+var is_new_stage = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -69,13 +70,18 @@ func toggle_player_activity(is_active):
 	is_player_active = is_active
 
 func toggle_crt_player():
-	if activ_player == player_name.JEC:
+	if is_new_stage:
 		activ_player = player_name.JIN
+		is_new_stage = false
 	else:
-		activ_player = player_name.JEC
+		if activ_player == player_name.JEC:
+			activ_player = player_name.JIN
+		else:
+			activ_player = player_name.JEC
 
 
 func _on_game_manager_new_stage_signal():
+	is_new_stage = true
 	toggle_crt_player()
 
 

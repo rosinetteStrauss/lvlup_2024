@@ -54,7 +54,9 @@ func new_round():
 	
 func new_stage():
 	is_first_stage = false
+	round_counter = 0
 	new_stage_signal.emit()
+	print("-------------new stage--------------")
 
 func launch_end_game():
 	#TODO define who has won
