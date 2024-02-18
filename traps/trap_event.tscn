@@ -1,7 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://dvkuqlx0ih1tl"]
+[gd_scene load_steps=5 format=3 uid="uid://7mh7y30g4w80"]
 
 [ext_resource type="Script" path="res://traps/trap_event.gd" id="1_gr4fb"]
-[ext_resource type="Texture2D" uid="uid://dkt2d8jdt7ndl" path="res://traps/Euclid.jpg" id="1_ss56e"]
+[ext_resource type="Texture2D" uid="uid://bfqjdse4b5ggq" path="res://sprites/euclide.png" id="2_o4vk1"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yr53q"]
 size = Vector2(270.5, 16)
@@ -21,7 +21,7 @@ shape = SubResource("RectangleShape2D_yr53q")
 
 [node name="Euclid" type="Sprite2D" parent="."]
 position = Vector2(370, 154)
-texture = ExtResource("1_ss56e")
+texture = ExtResource("2_o4vk1")
 
 [node name="Area2D" type="Area2D" parent="."]
 

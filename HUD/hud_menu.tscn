@@ -1,9 +1,15 @@
-[gd_scene load_steps=2 format=3 uid="uid://c3scqn34c8lm5"]
+[gd_scene load_steps=3 format=3 uid="uid://c3scqn34c8lm5"]
 
 [ext_resource type="Script" path="res://HUD/hud_menu.gd" id="1_demur"]
+[ext_resource type="Texture2D" uid="uid://djl17km43qia4" path="res://sprites/Background_indu.png" id="2_kfvaq"]
 
 [node name="HUD_menu" type="CanvasLayer"]
 script = ExtResource("1_demur")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(359.5, 240)
+scale = Vector2(1.12031, 1)
+texture = ExtResource("2_kfvaq")
 
 [node name="StartButton" type="Button" parent="."]
 anchors_preset = 8
@@ -42,8 +48,9 @@ offset_top = 50.0
 offset_right = 100.0
 offset_bottom = 150.0
 grow_horizontal = 2
-theme_override_font_sizes/font_size = 50
-text = "Name"
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 40
+text = "Stop produce!"
 horizontal_alignment = 1
 vertical_alignment = 1
 

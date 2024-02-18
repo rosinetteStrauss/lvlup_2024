@@ -16,6 +16,7 @@ func _on_start_button_pressed():
 	$StartButton.hide()
 	$GameName.hide()
 	$ExitButton.hide()
+	$Sprite2D.hide()
 	start_game.emit()
 
 
