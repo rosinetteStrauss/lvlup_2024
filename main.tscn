@@ -24,6 +24,7 @@ ground_top_left_lim = 180
 ground_top_right_lim = 545
 ground_top_y = 80
 ground_middle_right_lim = 650
+ground_middle_y = 240
 ground_bottom_right_lim = 715
 ground_bottom_y = 415
 
@@ -55,9 +56,14 @@ ponderation = 10
 [node name="ObjectiveZoneManager" type="Node" parent="."]
 script = ExtResource("10_n8quv")
 nb_zone = 2
+ground_top_left_lim = 180
+ground_top_right_lim = 545
+ground_top_y = 80
 ground_middle_left_lim = 95
 ground_middle_right_lim = 650
 ground_middle_y = 240
+ground_bottom_right_lim = 715
+ground_bottom_y = 415
 
 [node name="ObjectiveZone" parent="ObjectiveZoneManager" instance=ExtResource("10_wktuq")]
 position = Vector2(-254, 47)
