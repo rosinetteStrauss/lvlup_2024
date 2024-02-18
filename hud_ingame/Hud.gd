@@ -6,6 +6,7 @@ var countdown_timeout = -1
 @export var ponderation = 1
 
 func _ready():
+	$SwapLabel.hide()
 	countdown_timeout = $game_timer.get_wait_time()
 	$display_timer.set_text("Timer: " + str(countdown_timeout))
 
@@ -31,3 +32,12 @@ func _on_game_manager_new_round_signal():
 	$jec_bar.value = 0
 	$jin_bar.value = 0
 	update_display_timer(0,0)
+	show_swap_msg()
+	
+func show_swap_msg(): #text
+	#$SwapLabel.text = text
+	$SwapLabel.show()
+	$SwapLabel/SwapTimer.start()
+
+func _on_swap_timer_timeout():
+	$SwapLabel.hide()

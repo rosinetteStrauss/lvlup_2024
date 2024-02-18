@@ -7,10 +7,11 @@
 [ext_resource type="PackedScene" uid="uid://bl0xfys5egxes" path="res://traps/trap_own.tscn" id="6_gckfj"]
 [ext_resource type="PackedScene" uid="uid://v30f5cg6yjxt" path="res://player_manager/player_manager.tscn" id="7_b5o52"]
 [ext_resource type="PackedScene" uid="uid://bdni3r28xkeql" path="res://HUD/hud_end_screen.tscn" id="8_8e6iq"]
+[ext_resource type="PackedScene" uid="uid://djxvywisjyeci" path="res://HUD/hud_end_screen.tscn" id="8_8e6iq"]
 [ext_resource type="PackedScene" uid="uid://csobuv8hrtemj" path="res://hud_ingame/Hud.tscn" id="9_8q2u5"]
 [ext_resource type="Script" path="res://ObjectiveZoneManager.gd" id="10_n8quv"]
 [ext_resource type="PackedScene" uid="uid://ceydjsus4bpb7" path="res://map_manager/objective_zone.tscn" id="10_wktuq"]
-[ext_resource type="PackedScene" uid="uid://dvkuqlx0ih1tl" path="res://traps/trap_event.tscn" id="12_tnrip"]
+[ext_resource type="PackedScene" path="res://traps/trap_event.tscn" id="12_tnrip"]
 
 [node name="main" type="Node"]
 

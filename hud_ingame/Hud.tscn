@@ -45,5 +45,27 @@ offset_right = 720.0
 offset_bottom = 104.0
 text = "x : Launch special"
 
+[node name="SwapLabel" type="Label" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -55.5
+offset_top = -11.5
+offset_right = 55.5
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 50
+text = "Swap players !"
+horizontal_alignment = 1
+metadata/_edit_group_ = true
+
+[node name="SwapTimer" type="Timer" parent="SwapLabel"]
+wait_time = 2.0
+one_shot = true
+
 [connection signal="timeout" from="game_timer" to="." method="_on_game_timer_timeout"]
 [connection signal="timeout" from="second_timer" to="." method="_on_second_timer_timeout"]
+[connection signal="timeout" from="SwapLabel/SwapTimer" to="." method="_on_swap_timer_timeout"]
