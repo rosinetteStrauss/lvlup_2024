@@ -26,3 +26,5 @@ func _on_area_2d_body_exited(body):
 		is_in_area = false
 		check_if_trapped()
 
+func reset_trap_event():
+	$".".visible = false

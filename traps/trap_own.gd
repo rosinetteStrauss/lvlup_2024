@@ -2,7 +2,6 @@ extends RigidBody2D
 
 signal hit_own 
 
-var is_eco
 var is_in_area = false 
 var trap_owner = "Jec"
 # Called when the node enters the scene tree for the first time.
@@ -18,7 +17,7 @@ func is_eco_player(is_eco):
 	if is_eco:
 		$Sprite2D.texture = load("res://sprites/Piege-eco-poser.png")
 	else:
-		$Sprite2D.texture = load("res://sprites/Piege-indu-poser.png")
+		$Sprite2D.texture = load("res://sprites/Piege_indu-poser.png")
 
 func check_if_trapped():
 	if is_in_area:

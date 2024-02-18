@@ -47,5 +47,13 @@ text = "Name"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="TestButton" type="Button" parent="."]
+offset_left = -116.0
+offset_top = 35.0
+offset_right = -16.0
+offset_bottom = 85.0
+text = "Test end"
+
 [connection signal="pressed" from="StartButton" to="." method="_on_start_button_pressed"]
 [connection signal="pressed" from="ExitButton" to="." method="_on_exit_button_pressed"]
+[connection signal="pressed" from="TestButton" to="." method="_on_test_button_pressed"]

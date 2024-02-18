@@ -43,6 +43,7 @@ func check_end_game():
 
 func new_round():
 	round_counter += 1
+	$"../Jin".show()
 	new_round_signal.emit()
 	
 func new_stage():
