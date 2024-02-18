@@ -49,14 +49,14 @@ func _ready():
 
 func manage_visibility(is_active):
 	if is_active:
-		show()
-		position = Vector2(115,250)
+		$CollisionShape2D.set_deferred("disabled", false)
 		is_player_active = true
-		$CollisionShape2D.disabled = false
+		show()
+		global_position = Vector2(150,150)
 	else:
 		hide()
 		is_player_active = false
-		$CollisionShape2D.disabled = true
+		$CollisionShape2D.set_deferred("disabled", true)
 
 func _process(delta):
 	if is_player_active:
@@ -76,12 +76,12 @@ func _process(delta):
 			else:
 				$AnimatedSprite2D.animation = "indu_jump"
 		current_velocity.x = (current_velocity.x * (1-friction))
-		print("velo what: " + str(current_velocity.x))
+		#print("velo what: " + str(current_velocity.x))
 		current_velocity.y += current_gravity
 		position += current_velocity
-		print(position)
-		print(" ")
-		print(" ")
+		#print(position)
+		#print(" ")
+		#print(" ")
 			
 		if abs(current_velocity.x) > 0.001 || abs(current_velocity.y) > 0.2:
 			$AnimatedSprite2D.play()
@@ -95,19 +95,19 @@ func _process(delta):
 
 func move(left, right, jump):
 	if left == 1:
-		print("left")
+		#print("left")
 		$AnimatedSprite2D.flip_h = true
 		current_velocity.x -= speed
-		print("crt velocity x: " + str(current_velocity.x))
-		print("speed: " + str(speed))
+		#print("crt velocity x: " + str(current_velocity.x))
+		#print("speed: " + str(speed))
 	if right == 1:
-		print("right")
+		#print("right")
 		$AnimatedSprite2D.flip_h = false
 		current_velocity.x += speed
-		print("crt velocity x: " + str(current_velocity.x))
-		print("speed: " + str(speed))
+		#print("crt velocity x: " + str(current_velocity.x))
+		#print("speed: " + str(speed))
 	if jump == 1 and is_on_floor():
-		print("jump")
+		#print("jump")
 		current_velocity.y -= speed
 		jumping = true
 
@@ -166,3 +166,12 @@ func configure_new_stage():
 	crt_player_is_eco = !crt_player_is_eco
 	$trap_own.is_eco_player(crt_player_is_eco)
 	reset_timer()
+
+
+func _on_game_manager_new_stage_signal():
+	pass # Replace with function body.
+
+
+func _on_game_manager_new_round_signal():
+	currently_active = !currently_active
+	manage_visibility(currently_active)

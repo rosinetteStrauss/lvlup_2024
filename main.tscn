@@ -29,12 +29,12 @@ position = Vector2(-185, 403)
 [node name="trap_event" parent="." instance=ExtResource("12_tnrip")]
 
 [node name="Jec" parent="." instance=ExtResource("7_b5o52")]
-position = Vector2(112, 207)
+position = Vector2(111, 75)
 scale = Vector2(0.2, 0.2)
 time_to_validate_objective = 2.0
 
 [node name="Jin" parent="." instance=ExtResource("7_b5o52")]
-position = Vector2(112, 207)
+position = Vector2(110, 74)
 scale = Vector2(0.2, 0.2)
 active_at_start = false
 is_jec = false
@@ -62,12 +62,17 @@ position = Vector2(-254, 47)
 [connection signal="end_game_ctrl" from="game_manager" to="input_manager" method="toggle_player_activity"]
 [connection signal="end_game_ctrl" from="game_manager" to="Jec" method="manage_visibility"]
 [connection signal="end_game_hud" from="game_manager" to="HUD_end_screen" method="show_end_screen"]
+[connection signal="new_round_signal" from="game_manager" to="input_manager" method="_on_game_manager_new_round_signal"]
+[connection signal="new_round_signal" from="game_manager" to="Jec" method="_on_game_manager_new_round_signal"]
+[connection signal="new_round_signal" from="game_manager" to="Jin" method="_on_game_manager_new_round_signal"]
 [connection signal="activate_event_jec" from="input_manager" to="trap_event" method="_on_input_manager_activate_event_jec"]
 [connection signal="land_trap_jec" from="input_manager" to="Jec" method="_on_input_manager_land_trap_jec"]
 [connection signal="move_jec" from="input_manager" to="Jec" method="_on_input_manager_move_jec"]
+[connection signal="move_jin" from="input_manager" to="Jin" method="_on_input_manager_move_jin"]
 [connection signal="hit" from="trap_event" to="game_manager" method="_on_trap_event_hit"]
 [connection signal="objective_complete" from="Jec" to="ObjectiveZoneManager" method="_on_jec_objective_complete"]
 [connection signal="objective_complete" from="Jin" to="ObjectiveZoneManager" method="_on_jin_objective_complete"]
+[connection signal="player_won_points" from="ObjectiveZoneManager" to="game_manager" method="_on_objective_zone_manager_player_won_points"]
 [connection signal="body_entered" from="ObjectiveZoneManager/ObjectiveZone" to="Jec" method="_on_objective_zone_body_entered"]
 [connection signal="body_exited" from="ObjectiveZoneManager/ObjectiveZone" to="Jec" method="_on_objective_zone_body_exited"]
 [connection signal="hit" from="TrapEvent" to="game_manager" method="check_end_round"]

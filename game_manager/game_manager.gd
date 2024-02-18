@@ -10,9 +10,15 @@ signal all_objectives_done
 var round_counter
 var is_first_stage
 
+var score_jec
+var score_jin
+var current_player_is_jec = true
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	is_first_stage = true
+	score_jec = 0
+	score_jin = 0
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -27,11 +33,12 @@ func game_start():
 
 # signal timeout + player killed
 func check_end_round():
-	if round_counter >= 6:
+	new_round()
+	'''if round_counter >= 6:
 		#TODO give winner as input
 		check_end_game()
 	else:
-		new_round()
+		new_round()'''
 
 # signal all_objectives_done
 func check_end_game():
@@ -43,7 +50,6 @@ func check_end_game():
 
 func new_round():
 	round_counter += 1
-	$"../Jin".show()
 	new_round_signal.emit()
 	
 func new_stage():
@@ -64,3 +70,10 @@ func _on_hud_end_timeout():
 
 func _on_trap_own_hit_own():
 	check_end_round()
+
+func _on_objective_zone_manager_player_won_points():
+	if current_player_is_jec:
+		score_jec += 1
+	else:
+		score_jin += 1
+	#emit_signal("update_hud", score_jec, score_jin)

@@ -9,6 +9,7 @@ extends Node
 @export var ground_middle_y = 0
 
 var objective_zone_template
+signal player_won_points()
 
 var rng = RandomNumberGenerator.new()
 
@@ -57,6 +58,8 @@ func is_complete(zone):
 	crt.position = zone.position + Vector2(0, -spawn_offset_y)
 	get_tree().root.add_child.call_deferred(crt)
 	crt.visible = true
+	emit_signal("player_won_points")
+	
 
 func _on_jec_objective_complete(zone):
 	is_complete(zone)

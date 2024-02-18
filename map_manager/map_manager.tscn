@@ -14,7 +14,7 @@ size = Vector2(369, 51)
 size = Vector2(564.5, 43)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5k5h1"]
-size = Vector2(698, 44)
+size = Vector2(739, 198)
 
 [node name="map_manager" type="Node2D"]
 script = ExtResource("1_oqfxn")
@@ -76,5 +76,5 @@ collision_layer = 7
 collision_mask = 7
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ground_bottom/StaticBody2D"]
-position = Vector2(0, 196)
+position = Vector2(-4.5, 273)
 shape = SubResource("RectangleShape2D_5k5h1")
