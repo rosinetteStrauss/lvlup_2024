@@ -20,17 +20,12 @@ func _on_second_timer_timeout():
 
 func update_display_timer(score_left, score_right):
 	$jec_bar.value += score_left * ponderation
-	#$jin_bar.value += score_right * ponderation
+	$jin_bar.value += score_right * ponderation
 	$display_timer.set_text("Timer: " + str(countdown_timeout))
-
-# TODO
-# func objectif_complete(player)
-# update bar progress
 
 
 func _on_game_manager_update_hud(score_left, score_right):
 	update_display_timer(score_left, score_right)
-
 
 func _on_game_manager_new_round_signal():
 	$jec_bar.value = 0

@@ -19,6 +19,13 @@
 [node name="game_manager" parent="." instance=ExtResource("1_35k2w")]
 
 [node name="map_manager" parent="." instance=ExtResource("2_bucau")]
+spawn_offset_x = 20
+ground_top_left_lim = 180
+ground_top_right_lim = 545
+ground_top_y = 80
+ground_middle_right_lim = 650
+ground_bottom_right_lim = 715
+ground_bottom_y = 415
 
 [node name="input_manager" parent="." instance=ExtResource("5_iyfn2")]
 position = Vector2(142, 216)
@@ -63,6 +70,7 @@ position = Vector2(-254, 47)
 [connection signal="end_game_ctrl" from="game_manager" to="input_manager" method="toggle_player_activity"]
 [connection signal="end_game_ctrl" from="game_manager" to="Jec" method="manage_visibility"]
 [connection signal="end_game_hud" from="game_manager" to="HUD_end_screen" method="show_end_screen"]
+[connection signal="new_round_signal" from="game_manager" to="map_manager" method="_on_game_manager_new_round_signal"]
 [connection signal="new_round_signal" from="game_manager" to="input_manager" method="_on_game_manager_new_round_signal"]
 [connection signal="new_round_signal" from="game_manager" to="Jec" method="_on_game_manager_new_round_signal"]
 [connection signal="new_round_signal" from="game_manager" to="Jin" method="_on_game_manager_new_round_signal"]
